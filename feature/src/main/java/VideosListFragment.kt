@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.realeyes.core.interfaces.IOnVideoClickedListener
 import com.realeyes.domain.entities.ErrorModel
 import com.realeyes.domain.entities.VideoItemModel
 import com.realeyes.domain.entities.VideoModel
 import com.realeyes.feature.databinding.FragmentVideosListBinding
+import kotlinx.android.synthetic.main.fragment_videos_list.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -47,12 +49,20 @@ class VideosListFragment : Fragment(), IOnVideoClickedListener<VideoItemModel> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         mViewModel.responseLiveData.observe(
             this,
             Observer<VideoModel> { setAdapterData(it) })
         mViewModel.errorLiveData.observe(
             this,
             Observer<ErrorModel> { showErrorMessgae(it) })
+    }
+
+    private fun initViews() {
+        val linearLayoutManager = LinearLayoutManager(context)
+        videosRecycler.layoutManager = linearLayoutManager
+        videosRecycler.adapter = mAdapter
+
     }
 
     private fun showErrorMessgae(errorModel: ErrorModel?) {
