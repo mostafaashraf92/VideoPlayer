@@ -4,7 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <import type="com.realeyes.domain.entities.VideoItemModel" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.realeyes.feature.VideosViewModel" />
+
+        <variable
+            name="listener"
+            type="com.realeyes.core.interfaces.IOnVideoClickedListener&lt;VideoItemModel&gt;" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -13,8 +28,17 @@
             android:id="@+id/videosRecycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp" />
+            android:padding="10dp"
+            app:setItemClickListener="@{listener}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="No characters found"
+            android:textSize="25sp"
+            android:visibility="@{ viewModel.showEmptyListMessage ? View.VISIBLE : View.GONE}" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </layout>

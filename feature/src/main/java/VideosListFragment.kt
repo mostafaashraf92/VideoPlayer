@@ -5,11 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import com.realeyes.core.interfaces.IOnVideoClickedListener
+import com.realeyes.domain.entities.ErrorModel
+import com.realeyes.domain.entities.VideoItemModel
+import com.realeyes.domain.entities.VideoModel
+import com.realeyes.feature.databinding.FragmentVideosListBinding
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class VideosListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
+class VideosListFragment : Fragment(), IOnVideoClickedListener<VideoItemModel> {
 
+
+    private val mViewModel: VideosViewModel by viewModel()
+    private val mAdapter: VideosAdapter by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -18,7 +30,40 @@ class VideosListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_videos_list, container, false)
+        val binding = DataBindingUtil.inflate<FragmentVideosListBinding>(
+            inflater,
+            R.layout.fragment_videos_list,
+            container,
+            false
+        )
+            .also {
+                it.viewModel = mViewModel
+                it.lifecycleOwner = viewLifecycleOwner
+                it.listener = this@VideosListFragment
+            }
+
+        return binding?.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mViewModel.responseLiveData.observe(
+            this,
+            Observer<VideoModel> { setAdapterData(it) })
+        mViewModel.errorLiveData.observe(
+            this,
+            Observer<ErrorModel> { showErrorMessgae(it) })
+    }
+
+    private fun showErrorMessgae(errorModel: ErrorModel?) {
+        Toast.makeText(activity, errorModel?.errorMessage, Toast.LENGTH_LONG).show()
+    }
+
+    private fun setAdapterData(video: VideoModel?) {
+        video?.videos?.let { mAdapter.setAllItems(it) }
+    }
+
+    override fun onListItemClicked(item: VideoItemModel) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
