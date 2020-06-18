@@ -54,6 +54,7 @@ class VideosListFragment : Fragment(), IOnVideoClickedListener<VideoItemModel> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        mViewModel.executeUseCase()
         mViewModel.responseLiveData.observe(
             this,
             Observer<VideoModel> { setAdapterData(it) })

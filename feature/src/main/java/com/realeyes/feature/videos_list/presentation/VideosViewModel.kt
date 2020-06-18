@@ -15,11 +15,7 @@ class VideosViewModel(private val useCase: GetVideosUseCase) :
 
     var showEmptyListMessage: MutableLiveData<Boolean> = MutableLiveData()
 
-    init {
-        executeUseCase()
-    }
-
-    private fun executeUseCase() {
+    fun executeUseCase() {
         coroutineScope.launch {
             when (val result = useCase.getAllVideos()) {
                 is Output.Success -> handleSuccess(result.output)
