@@ -1,14 +1,13 @@
-package com.realeyes.feature
+package com.realeyes.feature.videos_list.data
 
 import com.realeyes.domain.entities.VideoModel
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 interface VideosApi {
 
     @GET("getVideos")
-    fun getAllVideos()
+    fun getAllVideosAsync()
             : Deferred<Response<VideoModel?>>
 }

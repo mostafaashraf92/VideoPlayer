@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.realeyes.feature.VideoPlayerActivity"
+        <activity android:name="com.realeyes.feature.video_player.presentation.VideoPlayerActivity"
             android:screenOrientation="landscape"
             tools:ignore="LockedOrientationActivity" />
 

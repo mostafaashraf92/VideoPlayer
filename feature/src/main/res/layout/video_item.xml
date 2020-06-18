@@ -11,7 +11,7 @@
 
         <variable
             name="adapter"
-            type="com.realeyes.feature.VideosAdapter" />
+            type="com.realeyes.feature.videos_list.presentation.VideosAdapter" />
     </data>
 
     <androidx.cardview.widget.CardView

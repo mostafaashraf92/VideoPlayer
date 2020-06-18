@@ -1,4 +1,4 @@
-package com.realeyes.feature
+package com.realeyes.feature.videos_list.data
 
 import com.realeyes.data.repositories.BaseRepository
 import com.realeyes.domain.entities.Output

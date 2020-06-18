@@ -1,4 +1,4 @@
-package com.realeyes.feature
+package com.realeyes.feature.video_player.presentation
 
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.util.Util
 import com.realeyes.core.Constants
 import com.realeyes.domain.entities.VideoItemModel
+import com.realeyes.feature.R
 import kotlinx.android.synthetic.main.activity_video_player.*
 
 

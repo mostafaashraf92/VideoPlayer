@@ -1,4 +1,4 @@
-package com.realeyes.feature
+package com.realeyes.feature.videos_list.presentation
 
 import androidx.lifecycle.MutableLiveData
 import com.realeyes.core.viewmodel.BaseViewModel

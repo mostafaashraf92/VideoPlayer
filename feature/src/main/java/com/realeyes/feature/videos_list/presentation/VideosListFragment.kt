@@ -1,4 +1,4 @@
-package com.realeyes.feature
+package com.realeyes.feature.videos_list.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,16 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.realeyes.core.Constants
 import com.realeyes.core.interfaces.IOnVideoClickedListener
 import com.realeyes.domain.entities.ErrorModel
 import com.realeyes.domain.entities.VideoItemModel
 import com.realeyes.domain.entities.VideoModel
+import com.realeyes.feature.R
+import com.realeyes.feature.video_player.presentation.VideoPlayerActivity
 import com.realeyes.feature.databinding.FragmentVideosListBinding
 import kotlinx.android.synthetic.main.fragment_videos_list.*
 import org.koin.android.ext.android.inject

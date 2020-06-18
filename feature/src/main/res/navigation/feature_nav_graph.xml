@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentVideosLIst"
-        android:name="com.realeyes.feature.VideosListFragment"
+        android:name="com.realeyes.feature.videos_list.presentation.VideosListFragment"
         android:label="VideosListFragment"></fragment>
 
 </navigation>

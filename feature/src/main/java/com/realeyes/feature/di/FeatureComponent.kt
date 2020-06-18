@@ -1,8 +1,13 @@
-package com.realeyes.feature
+package com.realeyes.feature.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.realeyes.core.Constants
 import com.realeyes.domain.usecase.GetVideosUseCase
+import com.realeyes.feature.videos_list.data.VideosApi
+import com.realeyes.feature.videos_list.data.VideosDataSourceImp
+import com.realeyes.feature.videos_list.data.VideosRepoImp
+import com.realeyes.feature.videos_list.presentation.VideosAdapter
+import com.realeyes.feature.videos_list.presentation.VideosViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit

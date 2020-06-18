@@ -12,7 +12,7 @@
 
         <variable
             name="viewModel"
-            type="com.realeyes.feature.VideosViewModel" />
+            type="com.realeyes.feature.videos_list.presentation.VideosViewModel" />
 
         <variable
             name="listener"

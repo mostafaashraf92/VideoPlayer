@@ -1,10 +1,10 @@
 package com.realeyes.videoplayer.ui.main
 
 import android.app.Application
-import com.realeyes.feature.featureDataModule
-import com.realeyes.feature.featureUiModule
-import com.realeyes.feature.useCaseModule
-import com.realeyes.feature.viewModelModule
+import com.realeyes.feature.di.featureDataModule
+import com.realeyes.feature.di.featureUiModule
+import com.realeyes.feature.di.useCaseModule
+import com.realeyes.feature.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.android.ext.koin.androidLogger
