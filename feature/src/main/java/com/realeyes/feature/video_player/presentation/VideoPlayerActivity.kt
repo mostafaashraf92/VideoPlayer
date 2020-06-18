@@ -28,11 +28,6 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        this.window
-            .setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
         setContentView(R.layout.activity_video_player)
         if (intent.hasExtra(Constants.INTENT_EXTRA_VIDEO_MODEL)) {
             model =
