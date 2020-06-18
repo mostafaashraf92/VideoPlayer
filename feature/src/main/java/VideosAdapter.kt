@@ -3,10 +3,8 @@ package com.realeyes.feature
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.realeyes.core.interfaces.IOnVideoClickedListener
 import com.realeyes.domain.entities.VideoItemModel
 import com.realeyes.feature.databinding.VideoItemBinding
@@ -37,15 +35,6 @@ class VideosAdapter :
         ) {
             onItemClickedListener = listener
         }
-
-        @JvmStatic
-        @BindingAdapter("app:setImgSrc")
-        fun setImageSrc(imageView: ImageView, url: String?) {
-            Glide.with(imageView.context)
-                .load(url)
-                .fitCenter().into(imageView)
-        }
-
 
     }
 

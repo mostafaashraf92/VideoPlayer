@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface VideosApi {
 
-    @GET("people/?")
+    @GET("getVideos")
     fun getAllVideos()
             : Deferred<Response<VideoModel?>>
 }

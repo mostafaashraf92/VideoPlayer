@@ -1,6 +1,7 @@
 package com.realeyes.feature
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.realeyes.core.Constants
 import com.realeyes.domain.usecase.GetVideosUseCase
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -8,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-val characterFeatureUiModule = module {
+val featureUiModule = module {
     factory { VideosAdapter() }
 }
 
@@ -25,7 +26,7 @@ val useCaseModule = module {
     factory { GetVideosUseCase(get<VideosRepoImp>()) }
 }
 
-val characterFeatureData = module {
+val featureDataModule = module {
     single { provideRetrofit() }
     single { get<Retrofit>().create(VideosApi::class.java) }
 
@@ -37,7 +38,7 @@ val characterFeatureData = module {
 
 fun provideRetrofit(): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://swapi.co/api/")
+        .baseUrl(Constants.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()
