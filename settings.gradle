@@ -1,0 +1,5 @@
+rootProject.name='VideoPlayer'
+include ':app',':feature'
+include ':core'
+include ':domain'
+include ':data'
