@@ -3,8 +3,8 @@
 
 # Prerequisits
 
-  - Android SDK 28
-  - Build tools 28
+  - Android SDK 29
+  - Build tools 29.0.3
 Install the dependencies and build apk in (Debug environment)
 ### Dependencies
 
@@ -16,7 +16,7 @@ Install the dependencies and build apk in (Debug environment)
 * ExoPlayer in order to support HLS (HTTP Live Streaming)
 * [Android LifeCycle Extension] - Android ViewModel lifecycle aware &LiveData
 * [DataBinding]
-*
+* Mockito
 ### Technicality
 
 This application uses MVVM design pattern and has the following Layers
