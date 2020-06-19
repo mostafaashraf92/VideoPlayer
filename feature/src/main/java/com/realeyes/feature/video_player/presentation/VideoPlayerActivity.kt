@@ -2,8 +2,8 @@ package com.realeyes.feature.video_player.presentation
 
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.view.Window
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -101,5 +101,25 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener {
 
     }
 
+    override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+        when (playbackState) {
+            Player.STATE_BUFFERING -> {
+                videoPlayer.hideController()
+                videoPlayer.useController=false
+                spinnerVideoContainer.visibility = View.VISIBLE
+            }
+            Player.STATE_ENDED -> {
+            }
+            Player.STATE_IDLE -> {
+            }
+            Player.STATE_READY -> {
+                videoPlayer.useController=true
+                videoPlayer.showController()
+                spinnerVideoContainer.visibility = View.GONE
+            }
+            else -> {
+            }
+        }
+    }
 
 }
