@@ -24,6 +24,7 @@ This application uses MVVM design pattern and has the following Layers
 - View
 - ViewModel(Using liveData to notify views with data)
 - Model 
--Clean Architecture (Domain layer+Data layer+Presentation layer)
--Modularization Concept
+- Clean Architecture (Domain layer+Data layer+Presentation layer)
+- Modularization Concept
+- Mocking Api through mySandBox
 You can find local unit tests for ViewModel and UseCases under Testing module
