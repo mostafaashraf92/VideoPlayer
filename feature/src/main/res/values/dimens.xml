@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="video_item_card_radius">3dp</dimen>
+    <dimen name="video_item_card_elevation">5dp</dimen>
+    <dimen name="video_item_card_content_padding">5dp</dimen>
+    <dimen name="video_item_card_margin">3dp</dimen>
+    <dimen name="video_item_title_text_size">20sp</dimen>
+    <dimen name="video_item_title_margin_top">10dp</dimen>
+    <dimen name="video_item_subtitle_size">14sp</dimen>
+    <dimen name="video_item_subtitle_margin_top">10dp</dimen>
+    <dimen name="video_item_subtitle_margin_start">15dp</dimen>
+    <dimen name="video_item_duration_margin_start">15dp</dimen>
+    <dimen name="video_item_duration_margin_top">10dp</dimen>
+    <dimen name="video_item_duration_text_size">14sp</dimen>
+    <dimen name="no_videos_found_message_text_size">25sp</dimen>
+
+</resources>

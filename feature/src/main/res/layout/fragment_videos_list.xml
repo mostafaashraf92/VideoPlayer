@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -30,13 +29,14 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             app:setItemClickListener="@{listener}" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="No characters found"
-            android:textSize="25sp"
+            android:text="@string/no_videos_found"
+            android:textSize="@dimen/no_videos_found_message_text_size"
             android:visibility="@{ viewModel.showEmptyListMessage ? View.VISIBLE : View.GONE}" />
 
     </RelativeLayout>

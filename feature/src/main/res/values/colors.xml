@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="video_item_title_text_color">#000</color>
+    <color name="exoplayer_controller_background_color">#CC2C2B2B</color>
+</resources>

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     android:layoutDirection="ltr"
-    android:background="#CC2C2B2B"
+    android:background="@color/exoplayer_controller_background_color"
     android:orientation="vertical"
     android:weightSum="2"
     tools:targetApi="28">
