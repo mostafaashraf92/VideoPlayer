@@ -55,8 +55,8 @@ class VideosAdapter :
 
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val characterModel = list[position]
-        holder.bind(characterModel)
+        val videoModel = list[position]
+        holder.bind(videoModel)
 
     }
 
