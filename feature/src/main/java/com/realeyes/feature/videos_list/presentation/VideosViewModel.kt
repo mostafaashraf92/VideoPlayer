@@ -1,41 +1,64 @@
 package com.realeyes.feature.videos_list.presentation
 
-import androidx.lifecycle.MutableLiveData
-import com.realeyes.core.viewmodel.BaseViewModel
-import com.realeyes.domain.entities.ErrorModel
+import com.realeyes.core.viewmodel.BaseUseCaseViewModel
+import com.realeyes.core.viewmodel.ViewSideEffect
 import com.realeyes.domain.entities.Output
-import com.realeyes.domain.entities.VideoModel
+import com.realeyes.domain.entities.Video
 import com.realeyes.domain.usecase.GetVideosUseCase
 import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
+import org.koin.core.component.KoinComponent
 
 class VideosViewModel(private val useCase: GetVideosUseCase) :
-    BaseViewModel<VideoModel>(useCase),
+    BaseUseCaseViewModel<Video, VideosUIAction, VideosUIState, VideosModelState, ViewSideEffect>(
+        useCase
+    ),
     KoinComponent {
 
-    var showEmptyListMessage: MutableLiveData<Boolean> = MutableLiveData()
-
-    fun executeUseCase() {
+    override fun reduceToUi(state: VideosModelState, uiState: VideosUIState): VideosUIState {
+        val videos = state.videoModel?.toVideoListItems().orEmpty()
+        return uiState.copy(
+            videos = videos,
+            error = state.errorModel,
+            showLoading = videos.isEmpty() && state.errorModel == null
+        )
+    }
+    private fun executeUseCase() {
         coroutineScope.launch {
-            when (val result = useCase.getAllVideos()) {
-                is Output.Success -> handleSuccess(result.output)
-                is Output.Error -> handleError(result.exception)
+            useCase.getAllVideos().collect { result ->
+                when (result) {
+                    is Output.Success -> {
+                        updateModelStateAndReduceToUi {
+                            copy(videoModel = result.output, errorModel = null)
+                        }
+                    }
+
+                    is Output.Error -> {
+                        updateModelStateAndReduceToUi {
+                            copy(videoModel = null, errorModel = result.exception)
+                        }
+                    }
+
+                    Output.Loading -> {
+                        updateUiState {
+                            copy(showLoading = true, videos = emptyList(), error = null)
+                        }
+                        updateModelStateAndReduceToUi {
+                            copy(videoModel = null, errorModel = null)
+                        }
+                    }
+                }
             }
         }
     }
 
+    override fun initializeState(): VideosModelState = VideosModelState(Video(null), null)
+    override fun initializeUiState(): VideosUIState = VideosUIState(emptyList(), null, true)
 
-    override fun handleSuccess(response: VideoModel?) {
-        responseLiveData.postValue(response)
-        showEmptyListMessage.value = shouldShowEmptyMessage(response)
+    override fun onUiAction(uiAction: VideosUIAction) {
+        when (uiAction) {
+            is VideosUIAction.LoadVideos -> {
+                executeUseCase()
+            }
+        }
     }
-
-    override fun handleError(errorModel: ErrorModel?) {
-        errorLiveData.postValue(errorModel)
-        showEmptyListMessage.value = false
-    }
-
-    private fun shouldShowEmptyMessage(response: VideoModel?) =
-        !(response?.videos != null && response.videos?.size!! > 0)
-
 }

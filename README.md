@@ -8,21 +8,21 @@
 Install the dependencies and build apk in (Debug environment)
 ### Dependencies
 
-* [RetroFit] - for Networking
-* [MVVM]
+* [KTOR] - for Networking
+* [MVI]
 * Kotlin
 * Coroutines
 * Android Navigation New Architecture component
 * ExoPlayer in order to support HLS (HTTP Live Streaming)
 * [Android LifeCycle Extension] - Android ViewModel lifecycle aware &LiveData
-* [DataBinding]
+* [Jetpack Compose]
 * Mockito
 ### Technicality
 
 This application uses MVVM design pattern and has the following Layers
 
 - View
-- ViewModel(Using liveData to notify views with data)
+- ViewModel(Using Flows to notify composables with data)
 - Model 
 - Clean Architecture (Domain layer+Data layer+Presentation layer)
 - Modularization Concept

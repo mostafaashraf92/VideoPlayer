@@ -3,8 +3,8 @@ package com.realeyes.testing.usecase
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.realeyes.domain.entities.ErrorModel
 import com.realeyes.domain.entities.Output
-import com.realeyes.domain.entities.VideoItemModel
-import com.realeyes.domain.entities.VideoModel
+import com.realeyes.domain.entities.VideoItem
+import com.realeyes.domain.entities.Video
 import com.realeyes.domain.repository.VideosRepo
 import com.realeyes.domain.usecase.GetVideosUseCase
 import io.mockk.every
@@ -28,13 +28,13 @@ class GetVideosUseCaseTest {
         runBlocking {
 
             val repo = mockk<VideosRepo>()
-            every { runBlocking { repo.getAllVideos() } } returns Output.Success<VideoModel>(
+            every { runBlocking { repo.getAllVideos() } } returns Output.Success<Video>(
                 constructVideoModel()
             )
 
             val useCase = GetVideosUseCase(repo)
             val expected =
-                useCase.getAllVideos() as Output.Success<VideoModel?>
+                useCase.getAllVideos() as Output.Success<Video?>
             Assert.assertNotNull(expected)
             Assert.assertEquals(expected.output?.videos?.size, 2)
         }
@@ -59,25 +59,25 @@ class GetVideosUseCaseTest {
 
     }
 
-    private fun constructVideoModel(): VideoModel {
-        var videoModel1 = VideoItemModel(
+    private fun constructVideoModel(): Video {
+        var videoModel1 = VideoItem(
             "Mission",
             "",
             "Action Movie",
             36000,
             ""
         )
-        var videoModel2 = VideoItemModel(
+        var videoModel2 = VideoItem(
             "Titanic",
             "",
             "Romantic Movie",
             36000,
             ""
         )
-        var arrayList = ArrayList<VideoItemModel>()
+        var arrayList = ArrayList<VideoItem>()
         arrayList.add(videoModel1)
         arrayList.add(videoModel2)
-        return VideoModel(arrayList)
+        return Video(arrayList)
     }
 
     private fun constructErrorModel(): ErrorModel {

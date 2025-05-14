@@ -1,0 +1,75 @@
+[versions]
+core-testing = "1.1.1"
+exoplayer = "2.19.1"
+junit = "4.13.2"
+kotlin = "1.9.0"
+androidx-lifecycle-extension = "2.9.0"
+androidx-lifecycle-viewmodel = "2.9.0"
+androidx-constraintlayout = "2.2.1"
+androidx-appcompat = "1.7.0"
+androidx-core-ktx = "1.16.0"
+navVersion = "2.9.0"
+androidx = "1.6.0"
+serialization = "1.6.3"
+compose = "2024.05.00"
+coil = "2.2.2"
+glide = "4.11.0"
+legacy-support-v4 = "1.0.0"
+lifecycle-viewmodel-ktx = "2.9.0"
+mockito-kotlin = "2.2.0"
+mockk = "1.9.3"
+navigation-fragment-ktx = "2.9.0"
+androidx-legacy-supportv4 = "2.9.0"
+koin = "4.0.4"
+junit-version = "1.2.1"
+espresso-core = "3.6.1"
+material = "1.12.0"
+ktor = "2.3.7"
+[libraries]
+androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacy-support-v4" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "androidx-lifecycle-extension" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-extension" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-fragment-ktx" }
+core-testing = { module = "android.arch.core:core-testing", version.ref = "core-testing" }
+exoplayer = { module = "com.google.android.exoplayer:exoplayer", version.ref = "exoplayer" }
+junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-viewmodel" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx-constraintlayout" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+androidx-ui-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+mockito-kotlin = { module = "com.nhaarman.mockitokotlin2:mockito-kotlin", version.ref = "mockito-kotlin" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+koin-core-extension = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-compose= { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-navigation-graph = { module = "io.insert-koin:koin-androidx-navigation", version.ref = "koin" }
+
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui" }
+compose-material = { module = "androidx.compose.material:material" }
+compose-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-runtime= { module = "androidx.compose.runtime:runtime" }
+coil-compose= { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit-version" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core", version.ref = "serialization" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+[plugins]
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+

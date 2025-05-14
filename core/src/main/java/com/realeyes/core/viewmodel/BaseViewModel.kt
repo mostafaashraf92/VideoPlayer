@@ -1,19 +1,40 @@
 package com.realeyes.core.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.realeyes.domain.entities.ErrorModel
-import com.realeyes.domain.usecase.UseCase
 import kotlinx.coroutines.CoroutineScope
-import org.koin.core.KoinComponent
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
+abstract class BaseViewModel<Action : ViewAction, SideEffect : ViewSideEffect> :
+    ViewModel() {
+    abstract fun onUiAction(uiAction: Action)
+    private val _effect: Channel<SideEffect> = Channel()
+    val effect = _effect.receiveAsFlow()
 
-abstract class BaseViewModel<T>(useCase: UseCase<T>) : ViewModel(), KoinComponent {
-    var responseLiveData: MutableLiveData<T> = MutableLiveData()
-    var errorLiveData: MutableLiveData<ErrorModel> = MutableLiveData()
-    var coroutineScope: CoroutineScope = viewModelScope
-    protected abstract fun handleSuccess(response: T?)
-    protected abstract fun handleError(errorModel: ErrorModel?)
+    protected fun sendEffect(effect: SideEffect) {
+        viewModelScope.launch { _effect.send(effect) }
+    }
 
+    protected fun launchIO(block: suspend () -> Unit) {
+        viewModelScope.launch(Dispatchers.IO) {
+            block.invoke()
+        }
+    }
+
+    protected fun launchMain(block: suspend CoroutineScope.() -> Unit) {
+        viewModelScope.launch {
+            block.invoke(this)
+        }
+    }
 }
+
+interface ViewAction
+
+interface ViewUIState
+
+interface BusinessModelState
+
+interface ViewSideEffect

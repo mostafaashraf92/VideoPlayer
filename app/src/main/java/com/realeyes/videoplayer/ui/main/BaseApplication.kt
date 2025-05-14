@@ -1,8 +1,8 @@
 package com.realeyes.videoplayer.ui.main
 
 import android.app.Application
-import com.realeyes.feature.di.featureDataModule
-import com.realeyes.feature.di.featureUiModule
+import com.realeyes.data.repositories.di.networkModule
+import com.realeyes.feature.di.uiModule
 import com.realeyes.feature.di.useCaseModule
 import com.realeyes.feature.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -20,8 +20,8 @@ class BaseApplication : Application() {
             androidFileProperties()
             modules(
                 listOf(
-                    featureUiModule,
-                    featureDataModule,
+                    uiModule,
+                    networkModule,
                     useCaseModule,
                     viewModelModule
                 )

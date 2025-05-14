@@ -1,10 +1,9 @@
 package com.realeyes.testing.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.realeyes.domain.entities.ErrorModel
 import com.realeyes.domain.entities.Output
-import com.realeyes.domain.entities.VideoItemModel
-import com.realeyes.domain.entities.VideoModel
+import com.realeyes.domain.entities.VideoItem
+import com.realeyes.domain.entities.Video
 import com.realeyes.domain.usecase.GetVideosUseCase
 import com.realeyes.feature.videos_list.presentation.VideosViewModel
 import io.mockk.every
@@ -30,7 +29,7 @@ class VideosViewModelTest {
     fun executeUseCaseSuccessFully() {
         val useCase = mockk<GetVideosUseCase>()
 
-        every { runBlocking { useCase.getAllVideos() } } returns Output.Success<VideoModel>(
+        every { runBlocking { useCase.getAllVideos() } } returns Output.Success<Video>(
             constructVideoModel()
         )
         val viewModel = VideosViewModel(useCase)
@@ -41,25 +40,25 @@ class VideosViewModelTest {
 
     }
 
-    private fun constructVideoModel(): VideoModel {
-        val videoModel1 = VideoItemModel(
+    private fun constructVideoModel(): Video {
+        val videoModel1 = VideoItem(
             "Mission",
             "",
             "Action Movie",
             36000,
             ""
         )
-        val videoModel2 = VideoItemModel(
+        val videoModel2 = VideoItem(
             "Titanic",
             "",
             "Romantic Movie",
             36000,
             ""
         )
-        val arrayList = ArrayList<VideoItemModel>()
+        val arrayList = ArrayList<VideoItem>()
         arrayList.add(videoModel1)
         arrayList.add(videoModel2)
-        return VideoModel(arrayList)
+        return Video(arrayList)
     }
 
 }

@@ -1,5 +1,6 @@
 package com.realeyes.domain.entities
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
-data class ErrorModel(var errorCode: String?, var errorMessage: String?) : Serializable
+@Serializable
+data class ErrorModel(var errorCode: String?, var errorMessage: String?)
